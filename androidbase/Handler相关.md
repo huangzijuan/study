@@ -40,3 +40,15 @@ activity.postOnUIThread(runnable)
 #### demo2
 handler.postDelay(runnable);
 runnable中存在潜在的内存泄漏
+
+## 四、细节点
+1. 为什么主线程不会因为Looper.loop()方法而造成阻塞
+activity 的生命周期都是对应的 ActivityThread 的 Handler 的 handleMessage 方法。主线程确实必须是阻塞的，如果不加入looper作死循环，当run()方法走完之后，系统就会回收线程所占用的资源。
+2. msg有哪些属性
+public Messenger replyTo;
+public int what;
+public Object obj;
+
+Bundle data;
+Handler target;
+Runnable callback;
