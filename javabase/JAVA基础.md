@@ -16,3 +16,5 @@ b. synchronized(XX.class)实现了全局锁的效果
 2. 对象类型（Object,数组，容器）为传引用
 3. String、Integer、Double等immutable类型因为类的变量设为final属性，无法被修改，只能重新赋值或生成对象。
 当Integer作为方法参数传递时，对其赋值会导致原有的引用被指向了方法内的栈地址，失去原有的的地址指向，所以对赋值后的Integer做任何操作都不会影响原有值。
+
+## 四、JAVA线程run与start方式的区别
