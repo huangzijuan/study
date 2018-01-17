@@ -1,0 +1,50 @@
+todolist：
+1.shadowlayout实现阴影 http://blog.csdn.net/javy_codercoder/article/details/50471424
+2.使用Hexo+github搭建自己的博客
+
+
+resolve：
+启动模式
+RecyclerView
+Java内存分配
+Handler的原理
+HashMap的原理
+UI卡顿的处理
+插值器原理
+多线程实现
+自定义View
+事件分发机制
+Bitmap缓存优化
+流行框架源码分析
+插件化、热修复原理
+WebView的处理和Js的互调
+冷门问题
+
+HTTPS和HTTP的区别
+例举多个使用过的设计模式
+例举多个解决过的内存泄漏
+内存泄漏的检测工具的使用
+操作系统寄存器相关的
+时间复杂度和空间复杂度的计算
+MediaCodec的使用流程
+C++的STL库的使用
+值得思考的问题
+
+Handler是否同步，为什么
+例举10种方法在屏幕上画个红色的圆
+如何写出一种单例是不可以被反射创建实例的
+如何获取或替换Glide的Lrucache
+
+2 arraylist1.6 1.7区别  底层
+  linkedlist 底层是怎么实现的 单向还是双向  lru缓存
+  如果按位置索引,那个快?
+3 hash的实现 是否是线程安全的 写一个不安全的实现 哪里不安全
+  hashmap的不安全在于扩容的时候
+  参见:http://blog.csdn.net/dlf123321/article/details/52014162
+4 concurrenthashmap 是否线程安全 先读后写是否有锁?
+  至于在一个segment里先读后写是否会加锁,我猜会,但是现在也不敢确定
+5 说说锁
+  我从synchronized说到lock,ReentrantLock,ReentrantReadWriteLock,condition
+  并且说了他们的区别联系,优势,劣势
+  参见:http://blog.csdn.net/dlf123321/article/details/51366228
+       http://blog.csdn.net/dlf123321/article/details/42373451

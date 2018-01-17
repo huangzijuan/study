@@ -14,5 +14,24 @@
 
 ## 四、Activity与Fragment传递数据的方式
 1. 将要传的值放在Bundle对象里；
+传递时：
+Fragment frg = new Fragment();
+Bundle bundle = new Bundle();
+bundle.putString("arg", "传递的值");
+frg.setArguments(bundle);
+取出时：在fragment的onCreateView()方法中取出Bundle
+Bundle bundle = getArguments();
+String data = bundle.getString("arg");
+
+2. getActivity()、new Fragment()方式
+fragment.setData(String data);
+
+3. Handler方式
+使Activity和Fragment共享一个Handler
+
+4. 接口回调方式
+任何两个类之间的数据传递都可以用接口回调
+
+参考：https://www.kancloud.cn/digest/actual-combat/121811s
 
 ## 五、Http Client与HttpURLConnection的区别

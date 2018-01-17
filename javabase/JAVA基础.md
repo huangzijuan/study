@@ -5,11 +5,16 @@
 4. char 数据类型：char(16 bit)
 
 ## 二、synchronized 相关知识点
+synchronized既可以锁类又可以锁对象，故synchronized分为类锁和对象锁
 1. synchronized(this) 以及 非static的synchronized方法，只能防止多个线程同时执行同一个对象的同步代码块
 
 注：a. 用synchronized关键字的时候，应尽量减小锁的粒度，使代码更大程度的并发（能在代码段上加同步就不要在整个方法上加同步）
 b. synchronized(XX.class)实现了全局锁的效果
   static synchronized方法也相当于锁住了代码段
+c. 因wait()、notify()、notifyAll()会对对象的“锁标志”进行操作，所以他们必须在synchronized函数或synchronized block中进行调用，否则会抛出异常IllegalMonitorStateException的异常
+
+结论：1.不同对象实例的对象锁是互不干扰的，但每个类只有一个类锁
+     2.类锁和对象锁互不干扰
 
 ## 三、引用传递和值传递
 1. 基本类型（byte,short,int,long,double,float,char,boolean）为传值
@@ -22,9 +27,23 @@ b. synchronized(XX.class)实现了全局锁的效果
 2. run() 在当前线程开启（如果当前线程是主线程则运行在主线程，如果当前线程是自线程则运行在自线程），没有达到写线程的目的。要顺序执行，要等待run方法体执行完毕后才可以继续执行下面的代码。
 
 ## 五、JAVA停止线程
+使用Thread.interrupt()方法
+判断线程是否停止状态
+1. thread.interrupted()：作用于当前线程是否已经中断；（清除中断标志，并返回原来的状态）
+2. thread.isInterrupted()：作用于调用该方法的线程对象所对应的的线程；
+停止线程方式：
+1. 将方法interrupt()与return结合使用，可以实现停止线程的效果
+2. 建议使用“抛异常”的方法来实现线程的停止，因为在cache块中还可以将异常向上抛，使线程停止事件得以传播
+
+参考：http://www.cnblogs.com/greta/p/5624839.html
+http://www.cnblogs.com/w-wfy/p/6414801.html
 
 ## 六、compareTo和compare方法的比较
-
+1. compareTo 是java.lang.Comparable接口中的方法，当需要对某个类的对象进行排序时，该类必须要实现Comparable接口，且须重写compareTo方法
+2. compare 是java.util.Comparator接口中的方法，实际上用的是待比较对象的compareTo方法
+参考：http://blog.csdn.net/pange1991/article/details/53954043
 ## 七、聚合与组合的区别
 
 ## 八、equal与==的区别
+
+## 九、运行时注解和编译时注解的区别
