@@ -30,6 +30,9 @@ Looper  负责轮询消息队列
 由handler的dispatchMassge()处理消息
 优先msg的callback；其次handler构造方法传入的callback；最后handleMessage();
 
+#### Message.obtain()方法
+直接从MessagePool中拿已经存在的message，省去了创建对象、申请内存的开销。
+
 ## 三、注意事项
 #### demo1
 handler.post(runnable);

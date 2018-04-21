@@ -40,9 +40,9 @@ startForeground(110, notification);// 开始前台服务
  1）START_NOT_STICKY: 服务终止时不会重建，比较安全
  2）START_STICKY: 服务终止时会重建并调用 onStartCommand()，但传递的intent为空，适用于不需要传参数的服务
  3）START_REDELIVER_INTENT: 和START_STICKY类似，但会将之前的intent传递给重建的服务，适用于必须立即恢复的紧急任务
- 4. Android 5.0后，系统强制要求必须使用显式 Intent 来启动 Service
- 5. 使用bindService方法不会调用onStartCommand()
- 6. 当手机屏幕发生旋转时，Activity会重新创建，之前通过bindService建立的连接便会断开（因之前的Context不存在了），服务也会被自动停止。
+4. Android 5.0后，系统强制要求必须使用显式 Intent 来启动 Service
+5. 使用bindService方法不会调用onStartCommand()
+6. 当手机屏幕发生旋转时，Activity会重新创建，之前通过bindService建立的连接便会断开（因之前的Context不存在了），服务也会被自动停止。
 
 ## 参考
 http://blog.csdn.net/u011240877/article/details/72654743#android-50-%E5%90%8E%E9%9C%80%E8%A6%81%E6%98%BE%E5%BC%8F%E5%90%AF%E5%8A%A8-service

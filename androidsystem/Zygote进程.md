@@ -1,0 +1,6 @@
+## 初始Zygote进程
+zygote进程是由Linux的init进程创建的，zygote是由java语言编写，所以在创建zygote进程前先初始化虚拟机。
+zygote进程负责后续Android应用程序框架层其他进程的创建和启动工作
+zygote进程会创建一个SystemServer进程，SystemServer进程负责启动系统的关键服务，如PackageManagerService、ActivityManagerService等
+## Zygote进程作用
+预加载资源和类到虚拟机中，在应用程序运行前，通过Zygote进程共享已运行的虚拟机的代码及内存信息，缩短应用程序运行所耗费的时间

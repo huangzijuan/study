@@ -27,3 +27,7 @@ decorView的layout()方法的调用为布局整个控件树的起点
 ## 参考
 http://www.codekk.com/blogs/detail/54cfab086c4761e5001b253f
 http://www.jianshu.com/p/060b5f68da79
+
+## getWidth()与getMeasureWidth()的区别
+getWidth()是通过视图右边坐标减去左边坐标计算出来的
+getMeasureWidth()是通过setMeasuredDimension()方法来进行设置的
