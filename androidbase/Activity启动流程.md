@@ -1,7 +1,11 @@
+## 关键类作用
+ActivityManagerService,简称AMS,系统服务，主要用于管理调度进程，Activity栈以及Activity启动销毁等操作
+ActivityThread，简称AT，app运行环境的一部分，也被称为主进程，UI的绘制之类的都是在基于这个调度
+Instrumentation，app运行组件监控类，主要用于管理Activity的启动，销毁以及监控activity运行
+ApplicationThread, AMS服务与app进行进行通讯的类
+ActivityRecord, 简称AR，主要用于在AMS中存储各个进程中Activity状态的信息类
+ProcessRecord,简称PR，主要用于在AMS中存储各个进程的状态信息类
 
-## Binder内存地址映射
-
-800kb
 
 ## ActivityStackSupervisor
 是一个Activity栈的管理类，有许多不同类型的list来存放ActivityRecord，ActivityStackSupervisor只是用来管理Activity与任务栈的，它并不具备执行具体操作的能力。
