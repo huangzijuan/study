@@ -22,5 +22,30 @@
 ## 六、一些流程图
 ![hashmap_put](http://p5xecv7m0.bkt.clouddn.com/fc1a88acc7944fca3b590944770005fc.png)
 
+## 七、1.8之后HashMap 中关于红黑树的三个关键参数
+
+TREEIFY_THRESHOLD
+一个桶的树化阈值
+static final int TREEIFY_THRESHOLD = 8
+当桶中元素个数超过这个值时
+需要使用红黑树节点替换链表节点
+
+UNTREEIFY_THRESHOLD
+一个树的链表还原阈值
+static final int UNTREEIFY_THRESHOLD = 6
+当扩容时，桶中元素个数小于这个值
+就会把树形的桶元素 还原（切分）为链表结构
+
+MIN_TREEIFY_CAPACITY
+哈希表的最小树形化容量
+static final int MIN_TREEIFY_CAPACITY = 64
+当哈希表中的容量大于这个值时，表中的桶才能进行树形化
+否则桶内元素太多时会扩容，而不是树形化
+为了避免进行扩容、树形化选择的冲突，这个值不能小于 4 * TREEIFY_THRESHOLD
+
+
 ## 其它
 时间复杂度：最优情况为O(1)  最坏情况位O(N)
+
+## 参考
+https://mp.weixin.qq.com/s/zSpQEiaxSgGqirDMSeyMfQ
