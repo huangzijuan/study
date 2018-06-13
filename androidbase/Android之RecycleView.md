@@ -16,3 +16,5 @@ RecycleView.ItemAnimator
 
 ## 参考
 https://mp.weixin.qq.com/s/LAm4m9klItuQpr4Sd2_mvQ
+
+https://mp.weixin.qq.com/s/neXvftUanFP778Uv1wx5lQ
