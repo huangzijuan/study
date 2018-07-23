@@ -55,3 +55,16 @@ public Object obj;
 Bundle data;
 Handler target;
 Runnable callback;
+
+## 解决内存泄漏
+1、声明一个继承Runnable类的静态内部类，并弱引用要操作的控件
+
+2、在onDestroy()中调用removeCallbacksAndMessages()
+
+3、调用Badoo团队的WeakHandler来替代os.Handler
+
+666、WeakHandler只能替代postDelay(New Runnable())方法造成的内存泄漏，没办法替代os.Handler中接收消息的操作，所以正常情况下需要调用方法(2)
+
+
+
+参考：https://blog.csdn.net/jbb0403/article/details/75109890
