@@ -39,8 +39,17 @@ src/main/（主源集）
 
 ## 在library中使用productFlavors
 publishNonDefault 这个变量的配置来使得依赖库在编译的时候默认生成所有变种的包，而不是仅仅生成 release 一种。
+publishNonDefault true //注意，这里的配置是为了去除gradle对library module默认只编译release buildType的限制
 
 ## 参考
 https://blog.csdn.net/yulyu/article/details/70257015
 
 https://developer.android.com/studio/build/build-variants?
+
+
+
+##——————————————————————————————————————————————————————————————————————————
+gradle的工作流程分三个阶段：
+Initialization ： 这个阶段，主要是会分析哪些module将被构建。这个时候又一个很明显的操作就是这个阶段会解析settings.gradle，并创建project对象。
+Configuration ：这个阶段，主要是执行当前项目所有需要构建的module以及root project的build.gradle脚本；这个过程会形成每个项目的task依赖图。
+Execution ：这个阶段，执行我们指定的task任务，以及其依赖的任务
