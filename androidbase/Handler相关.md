@@ -55,6 +55,16 @@ public Object obj;
 Bundle data;
 Handler target;
 Runnable callback;
+3. 阻塞操作的地方
+public static void loop() {
+        ......
+        for (;;) {
+            Message msg = queue.next(); // might block  在这儿队列阻塞了
+            ......
+            msg.target.dispatchMessage(msg);//里面调用了handler.handleMessage()
+        }
+    }
+
 
 ## 解决内存泄漏
 1、声明一个继承Runnable类的静态内部类，并弱引用要操作的控件
