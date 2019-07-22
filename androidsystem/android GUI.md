@@ -1,0 +1,1 @@
+ViewRootImpl 在构造过程中初始化一些重要的成员变量，包括一个Surface对象（注意这是一个空的Surface对象，没有赋给任何有效的值，后面会通过CopyFromParcel来填充），还有mChoreophaer定时器（Singleton对象，每个进程只有一个）
