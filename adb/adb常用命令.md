@@ -22,3 +22,6 @@ dumpsys [Option]
         activity 显示所有的activities的信息
         window 显示键盘，窗口和它们的关系
         wifi 显示wifi信息
+
+## 其它参考
+http://gityuan.com/2016/02/27/am-command/
