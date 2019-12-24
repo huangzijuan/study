@@ -21,3 +21,6 @@ fastlane match development
 
 // 参考文档
 https://chenjunzhi.com/2018/09/10/ios-continuous-build-2/
+
+## XCode帮助文档
+https://help.apple.com/xcode/mac/current/#/dev154b28f09
