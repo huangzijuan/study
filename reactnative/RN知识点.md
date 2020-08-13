@@ -1,0 +1,2 @@
+1. RN中只有一个JavaScript执行线程，执行繁重工作之前最好使用InteractionManager来确保所有的交互和动画都处理完毕。更新数据到
+2.
