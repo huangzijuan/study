@@ -1,0 +1,9 @@
+1. UI系统基本原理
+CPU、GPU和显示器协作方式：CPU将计算好的显示内容提交给 GPU，GPU渲染后放入帧缓冲区，然后视频控制器按照同步信号从帧缓冲区取帧数据传递给显示器显示（CPU主要用于基本数学和逻辑计算，GPU的主要作用就是确定最终输送给显示器的各个像素点的色值）
+
+2. 性能
+由于Dart API也是调用操作系统API，所以它的性能接近原生。
+
+3. Element
+组件最终的Layout、渲染都是通过RenderObject来完成的。
+从创建到渲染的流程：根据Widget生产Element，然后创建相应的RenderObject并关联到Element.renderObject属性上，最后通过RenderObject来完成布局排列和绘制。（RenderObject的主要职责是Layout和绘制）

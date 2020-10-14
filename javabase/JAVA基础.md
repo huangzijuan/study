@@ -15,6 +15,11 @@ c. 因wait()、notify()、notifyAll()会对对象的“锁标志”进行操作�
 
 结论：1.不同对象实例的对象锁是互不干扰的，但每个类只有一个类锁
      2.类锁和对象锁互不干扰
+2. 总结：分三种情况:
+ 1.自定义对象锁:如上面的String lock = new String(); 无论是不是同一个对象,只要拿到对象锁即可执行.
+ 2.当前对象锁:如synchronized(this)或同步方法; 同一个对象的多个线程,只能一个线程去执行同步区域.多个对象则互不影响.（synchronized(this) 和 synchronized 方法一样）
+ 3.类锁:如synchronized(class)或静态同步方法;无论是不是同一个对象,只能一个线程去执行同步区域.
+ （synchronized(class) 和 synchronized 静态方法一样）
 
 ## 三、引用传递和值传递
 1. 基本类型（byte,short,int,long,double,float,char,boolean）为传值
