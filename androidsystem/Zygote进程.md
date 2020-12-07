@@ -4,3 +4,9 @@ zygote进程负责后续Android应用程序框架层其他进程的创建和启�
 zygote进程会创建一个SystemServer进程，SystemServer进程负责启动系统的关键服务，如PackageManagerService、ActivityManagerService等
 ## Zygote进程作用
 预加载资源和类到虚拟机中，在应用程序运行前，通过Zygote进程共享已运行的虚拟机的代码及内存信息，缩短应用程序运行所耗费的时间
+
+## 为什么需要有zygote
+把开进程作为一个入口进程的管理
+## 为什么zygote需要socket方式通讯而不是binder
+binder容易被hook
+安全

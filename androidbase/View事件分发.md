@@ -36,3 +36,19 @@ OnTouchListen>onTouchEvent>OnClickListen
 
 ## 参考
 http://www.jianshu.com/p/057832528bdd
+
+
+
+## 代码分析
+第一块：是否拦截子View
+if (actionMasked == MotionEvent.ACTION_DOWN || mFirstTouchTarget != null){
+} else {
+}
+第二块：遍历子View，选择分发给哪个View处理事件
+if (!canceled && !intercepted) {
+  dispatchTransformedTouchEvent(ev, false, child, idBitsToAssign)  // 询问子View是否处理事件
+}
+第三块：如果没有子View处理事件，询问自己是否处理事件；否则子View处理（down直接返回true，move询问子View是否处理事件）
+if (mFirstTouchTarget == null) {
+} else {
+}

@@ -4,7 +4,9 @@
 
 
 ## 流程图
-![Imageloader_displayImage](http://p5xecv7m0.bkt.clouddn.com/0263c78d8dae3f0ad6ca60445829c759.png)
+![图片1](/assets/图片1.png)
+
+![图片2](/assets/图片2.png)
 
 ## 参考
 https://blog.csdn.net/sinat_23092639/article/details/65936005
