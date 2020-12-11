@@ -85,6 +85,6 @@ EventBus.builder().addIndex(new MyEventBusIndex()).installDefaultEventBus();
 FindState 对订阅方法做一些校验
 
 ## 类关系图
-![EventBus_class](http://p5xecv7m0.bkt.clouddn.com/52170046d6bf5882cdcddb635682e802.png)
+![EventBus注册过程](/assets/EventBus注册过程.png)
 
 ## 参考

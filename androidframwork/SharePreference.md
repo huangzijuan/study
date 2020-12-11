@@ -4,6 +4,15 @@
 保存：commit同步提交，阻塞主线程；apply异步提交，无法获取结果且可能数据丢失
 更新：把Map中的数据，全部序列化成XML，覆盖文件保存（全量更新）
 
+## SP Apply流程
+1. 调用commitToMemory将数据改动同步到内存中，也就是SharePreferencesImpl的mMap中
+2. 然后调用 QueuedWork.add(awaitCommit);将一个等待的任务加入到列表中，在Activity等的生命周期中，就是以这个为判断条件，等待写入任务执行完成的。
+3. 调用enqueueDiskWrite方法的实现，将写入任务加入到队列中，写入磁盘的操作会在子线程中执行
+
+
+## ANR发生原因
+ANR 都是经由 QueuedWork.waitToFinish() 触发的，使用apply
+
 ## 传统I/O
 虚拟内存被操作系统划分成两块：用户空间和内存空间。
 

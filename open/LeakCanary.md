@@ -1,0 +1,16 @@
+## 流程
+![4086f12d6c27089dcd411604f90a250](/assets/4086f12d6c27089dcd411604f90a250.png)
+
+## 步骤
+通过registerActivityLifecycleCallbacks监听Activity的生命周期
+在onActivityDestroyed方法中调用RefWatcher.watch 方法
+
+利用WeakReference和ReferenceQueue，通过将Activity包装到WeakReference中，被WeakReference包装过的Activity对象如果被回收，该WeakReference引用会被放到ReferenceQueue中，通过监测ReferenceQueue里的内容就能检查到Activity是否能够被回收。
+
+
+1. 首先通过removeWeaklyReachablereference来移除已经被回收的Activity引用
+2. 通过gone(reference)判断当前弱引用对应的Activity是否已经被回收，如果已经回收说明activity能够被GC，直接返回即可。
+3. 如果Activity没有被回收，调用GcTigger.runGc方法运行GC，GC完成后在运行第1步，然后运行第2步判断Activity是否被回收了，如果这时候还没有被回收，那就说明Activity可能已经泄露。
+4. 如果Activity泄露了，就抓取内存dump文件(Debug.dumpHprofData)
+5. 之后通过HeapAnalyzerService.runAnalysis进行分析内存文件分析
+6. 最后通过DisplayLeakService进行内存泄漏的展示。

@@ -6,6 +6,7 @@ Thread  负责业务逻辑
 Handler  负责发送消息和处理消息
 MessageQueue  负责保存消息
 Looper  负责轮询消息队列
+![handler机制](/assets/handler机制.png)
 
 #### Handler构造方法
 1. 创建looper
@@ -52,6 +53,7 @@ public Messenger replyTo;
 public int what;
 public Object obj;
 
+long when;
 Bundle data;
 Handler target;
 Runnable callback;
