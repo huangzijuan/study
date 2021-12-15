@@ -1,12 +1,12 @@
-0. Android/flutter的一些区别
+##0. Android/flutter的一些区别
   编程范式不同：Android视图开发是命令式的；flutter视图开发是申明式的。
 
-1. Widget和element和RenderObject之间的关系
+##1. Widget和element和RenderObject之间的关系
   每一个Widget都有一个对应的Element，但Element不一定会有对应的RenderObject。
   每个Widget都有三个关键方法：保证唯一的key、创建element的createElement、canUpdate
   对RenderObjectWidget还有一个方法：createRenderObject
   但并非每个Widget都有与之对应的RenderObjectWidget
-  每个Widget都有一个对应的Element，但Element不一定会有对应的RenderObject
+
   Android的ViewTree为：PhoneWindow ——> DecorView ——> (TitleView、ContentView)
   flutter的ViewTree为：RenderObjectToWidgetAdapter ——> (MyApp、MyMeterialApp)
 
@@ -18,7 +18,7 @@
   RenderObjectElement中持有对Widget和RenderObject的引用
   Element中有一个关键mount方法：ComponentElement的mount方法主要作用是执行build，而RenderObjectElement的mount方法主要作用是生产RenderObject。
 
-  总结：首先要了解flutter中的三棵树：Widget树（配置信息的树，是Element的配置）、Element树（作为中间层，管理着将Widget生成RenderObject和一些更新的操作）、RenderObject树（渲染树，负责计算、布局和绘制）。写好Widget树后，flutter会在遍历widget树时调用Widget里面的createElement方法生成对应节点的Element对象，Element创建好后flutter会执行mount方法，对应非渲染的ComponentElement来说mount主要执行widget里的build放，而对于渲染的RenderObjectElement来说mount里会调用widget里的createRenderObject方法生成RenderObject。当widget树发生变化时，持有该widget的Element节点会被标记为dirty，在下一个绘制周期，flutter会出发Element树的更新，会通过canUpdate方法来判断是否可以使用新的widget来更新Element里的配置，还是重新生成Element，并使用最新的Widget数据更新自身及关联的RenderObject对象。布局和绘制完成后，合成和渲染会交给skia引擎来做
+  总结：首先要了解flutter中的三棵树：Widget树（配置信息的树，是Element的配置）、Element树（作为中间层，管理着将Widget生成RenderObject和一些更新的操作）、RenderObject树（渲染树，负责计算、布局和绘制）。写好Widget树后，flutter会在遍历widget树时调用Widget里面的createElement方法生成对应节点的Element对象，Element创建好后flutter会执行mount方法，对应非渲染的ComponentElement来说mount主要执行widget里的build方法，而对于渲染的RenderObjectElement来说mount里会调用widget里的createRenderObject方法生成RenderObject。当widget树发生变化时，持有该widget的Element节点会被标记为dirty，在下一个绘制周期，flutter会出发Element树的更新，会通过canUpdate方法来判断是否可以使用新的widget来更新Element里的配置，还是重新生成Element，并使用最新的Widget数据更新自身及关联的RenderObject对象。布局和绘制完成后，合成和渲染会交给skia引擎来做
 
 2. Root的创建过程
 
@@ -35,7 +35,7 @@
   h. 挂载的同时，如果是需要渲染的widget则调用widget.createRenderObject,创建Child[RenderObject]
   i. 创建完成后，调用attachRenderObject,完成和Root[RenderObject]的链接
 
-3. flutter的刷新流程
+##3. flutter的刷新流程
   a. 调用setState时，Element将自身标记为dirty，并调用owner.scheduleBuildFor(this)，通知buildOwner进行处理
   b. buildOwner将element添加到集合_dirtyElements中，等待下一帧绘制时集中处理，并通知ui.window安排新的一帧
   c. 底层引擎最终回到dart层，执行buildOwner的buildScope方法：（_dirtyElement.sort ——> _dirtyElement[i].rebuild ——> _dirtyElement.clear）
@@ -43,7 +43,7 @@
      ComponentElement的performRebuild()：执行element的build() ——> updateChild
      RenderObjectElement的performRebuild()：调用了widget.updateRenderObject方法更新RenderObject
 
-4. Future和microtask执行顺序
+##4. Future和microtask执行顺序
 
 
 ## 参考

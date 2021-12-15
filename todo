@@ -51,3 +51,11 @@ Handler是否同步，为什么
 
 ## 面经
 https://mp.weixin.qq.com/s/lpGRlZGte9347G-24Qpm4g
+
+
+
+## 其它
+synchronized底层原理
+线程安全的类：SparseArray
+bibili：jvm内存模型全面解析
+Android中的Surface和SurfaceView
