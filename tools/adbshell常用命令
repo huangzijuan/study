@@ -1,0 +1,2 @@
+1. 获取哪个应用在前台
+adb shell "dumpsys window | grep mCurrentFocus"
