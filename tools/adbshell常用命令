@@ -1,2 +1,6 @@
 1. 获取哪个应用在前台
 adb shell "dumpsys window | grep mCurrentFocus"
+
+2. 旋转屏幕
+adb shell settings put system accelerometer_rotation 0
+adb shell settings put system user_rotation 1
